@@ -16,4 +16,7 @@ javascript: (function () {
 }());
 ```
 
+### See it in action
+![Example](/redcap_autofill.gif?raw=true "AutoFill Example")
+
 Andrew Martin / Stanford University

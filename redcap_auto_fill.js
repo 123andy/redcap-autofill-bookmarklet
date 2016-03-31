@@ -17,11 +17,15 @@
 
 
 // Autocomplete a single REDCap TR
+function getRandomWord() {
+	var random_words = ['Rock', 'Paper', 'Scissors'];
+	return random_words[Math.floor(Math.random()*random_words.length)];
+}
+
 function fillRow(tr) {
 	
 	var date_types = Array('date_ymd', 'date_mdy', 'datetime_ymd', 'datetime_mdy', 'datetime_seconds_ymd', 'datetime_seconds_mdy');
 	
-	var random_words = ['Rock', 'Paper', 'Scissors'];
 	
 	// Check a random radio button
 	var radios = $(tr).find("input[type=radio]").filter(":visible");
@@ -29,6 +33,7 @@ function fillRow(tr) {
 		var randomnumber = Math.floor(Math.random() * radios.length);
 		radios[randomnumber].checked = true;
 		$(radios[randomnumber]).trigger('click').trigger('blur');
+		return;
 	}
 	
 	// Handle text inputs
@@ -60,8 +65,9 @@ function fillRow(tr) {
 		} else {
 			//console.log("fv: " + fv);
 			// Get a random word
-			$(e).val(random_words[Math.floor(Math.random()*random_words.length)]);
+			$(e).val(getRandomWord());
 		}
+		return;
 	});
 	
 	// Select a dropdown value
@@ -69,19 +75,21 @@ function fillRow(tr) {
 	if (options.length > 0) {
 		var randomnumber = Math.floor(Math.random() * options.length);
 		$(options[randomnumber]).prop('selected', true);
+		return;
 	}
 	
 	// Set sliders
 	var sliders = $(tr).find("div.slider:first").trigger('onmousedown').find('input').val(50);
 	
 	// Set textarea
-	var textarea = $(tr).find('textarea').val(random_words[Math.floor(Math.random()*random_words.length)]);
+	var textarea = $(tr).find('textarea').val(getRandomWord());
 	
 	// Check checkboxes
 	var checkboxes = $(tr).find("input[type=checkbox]").filter(":visible").filter(":not([id='__LOCKRECORD__'])");
 	if (checkboxes.length > 0) {
 		var randomnumber = Math.floor(Math.random() * checkboxes.length);
 		$(checkboxes[randomnumber]).trigger('click');
+		return;
 	}
 }
 

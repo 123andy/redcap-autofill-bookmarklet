@@ -36,6 +36,14 @@ function fillRow(tr) {
 		return;
 	}
 	
+	// Check for enhanced radios
+	var enhancedchoice = $(tr).find("div.enhancedchoice").filter(":visible");
+	if (enhancedchoice.length > 0) {
+		var randomnumber = Math.floor(Math.random() * enhancedchoice.length);
+		$('label', enhancedchoice[randomnumber]).trigger('click');
+		return;		
+	}
+	
 	// Handle text inputs
 	var inputs = $(tr).find("input[type=text]").each(function(i,e){
 		//console.log('Input: ' + $(e).attr('name'));
@@ -54,11 +62,27 @@ function fillRow(tr) {
 			//console.log(b + ": " + p1 + " - " + p2);
 			//redcap_validate(this,'1','111','soft_typed','integer',1)
 			$(e).val('1');
-		} else if ((date_types.indexOf(fv) != -1) && ($(e).parent().find("button[onclick^='set']").length > 0)) {
-			$(e).parent().find("button").trigger('click');
+		} else if ((date_types.indexOf(fv) != -1)) {
+			if (($(e).parent().find("button[onclick^='set']").length > 0)) {
+				$(e).parent().find("button").trigger('click');
+			} else {
+				switch(fv) {
+					case "date_ymd":
+						$(e).val('2016-10-25');
+						break;
+					case "date_mdy":
+						$(e).val('10-25-2016');
+						break;
+					case "date_dmy":
+						$(e).val('25-10-2016');
+						break;					
+				}
+			}
 		} else if (fv == 'number') {
 			$(e).val('2');
 		} else if (fv == 'zip' ) {
+			$(e).val('55112');
+		} else if (fv == 'zipcode' ) {
 			$(e).val('55112');
 		} else if (fv == 'phone') {
 			$(e).val('(555) 867-5309');

@@ -25,11 +25,11 @@ function getRandomWord() {
 function fillRow(tr) {
 	
 	var date_types = Array('date_ymd', 'date_mdy', 'datetime_ymd', 'datetime_mdy', 'datetime_seconds_ymd', 'datetime_seconds_mdy');
-	
-	
-	// Check a random radio button
+
+	// Check a random radio button (skip checked radios)
 	var radios = $(tr).find("input[type=radio]").filter(":visible");
-	if (radios.length > 0) {
+	var radios_checked = $(tr).find("input[type=radio]:checked");
+	if ((radios.length > 0) && (radios_checked.length == 0)) {
 		var randomnumber = Math.floor(Math.random() * radios.length);
 		radios[randomnumber].checked = true;
 		$(radios[randomnumber]).trigger('click').trigger('blur');
@@ -38,7 +38,8 @@ function fillRow(tr) {
 	
 	// Check for enhanced radios
 	var enhancedchoice = $(tr).find("div.enhancedchoice").filter(":visible");
-	if (enhancedchoice.length > 0) {
+	if (enhancedchoice.length > 0 && radios_checked.length == 0) {
+		// Get parent input field for these enhanced radios
 		var randomnumber = Math.floor(Math.random() * enhancedchoice.length);
 		$('label', enhancedchoice[randomnumber]).trigger('click');
 		return;		
@@ -111,11 +112,13 @@ function fillRow(tr) {
 	var sliders = $(tr).find("div.slider:first").trigger('onmousedown').find('input').val(50);
 	
 	// Set textarea
-	var textarea = $(tr).find('textarea').val(getRandomWord());
+	var textarea = $(tr).find('textarea');
+	if (textarea && textarea.val() == '') textarea.val(getRandomWord());
 	
 	// Check checkboxes
 	var checkboxes = $(tr).find("input[type=checkbox]").filter(":visible").filter(":not([id='__LOCKRECORD__'])");
-	if (checkboxes.length > 0) {
+	var checkboxes_checked = $('input:checked',tr);
+	if (checkboxes.length > 0 && checkboxes_checked.length == 0) {
 		var randomnumber = Math.floor(Math.random() * checkboxes.length);
 		$(checkboxes[randomnumber]).trigger('click');
 		return;

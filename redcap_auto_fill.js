@@ -47,8 +47,11 @@ function fillRow(tr) {
 	// Handle text inputs
 	var inputs = $(tr).find("input[type=text]").each(function(i,e){
 		//console.log('Input: ' + $(e).attr('name'));
-		
-		// Check for field-validation attribute
+
+        // Skip ones with existing values
+        if ($(e).val() !== "") return;
+
+        // Check for field-validation attribute
 		var fv = $(e).attr('fv');
 		
 		if (fv == 'email') {
@@ -85,7 +88,9 @@ function fillRow(tr) {
 		} else if (fv == 'zipcode' ) {
 			$(e).val('55112');
 		} else if (fv == 'phone') {
-			$(e).val('(555) 867-5309');
+            $(e).val('(555) 867-5309');
+        } else if (fv == 'time') {
+			$(e).val('12:34');
 		} else {
 			//console.log("fv: " + fv);
 			// Get a random word

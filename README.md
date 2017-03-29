@@ -19,4 +19,6 @@ javascript: (function () {
 ### See it in action
 ![Example](/redcap_autofill.gif?raw=true "AutoFill Example")
 
+It will now ignore most fields that have existing data
+
 Andrew Martin / Stanford University

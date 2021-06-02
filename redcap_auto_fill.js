@@ -24,7 +24,9 @@ function getRandomWord() {
 
 function fillRow(tr) {
 	
-	var date_types = Array('date_ymd', 'date_mdy', 'datetime_ymd', 'datetime_mdy', 'datetime_seconds_ymd', 'datetime_seconds_mdy');
+	var date_types = Array('date_ymd', 'date_mdy', 'date_dmy', 
+			       'datetime_ymd', 'datetime_mdy', 'datetime_dmy',
+			       'datetime_seconds_ymd', 'datetime_seconds_mdy', 'datetime_seconds_dmy');
 
 	// Check a random radio button (skip checked radios)
 	var radios = $(tr).find("input[type=radio]").filter(":visible");
@@ -79,6 +81,24 @@ function fillRow(tr) {
 						break;
 					case "date_dmy":
 						$(e).val('25-10-2016');
+						break;
+					case "datetime_ymd":
+						$(e).val('2016-10-25 23:45');
+						break;
+					case "datetime_mdy":
+						$(e).val('10-25-2016 23:45');
+						break;
+					case "datetime_dmy":
+						$(e).val('25-10-2016 23:45');
+						break;					
+					case "datetime_seconds_ymd":
+						$(e).val('2016-10-25 23:45');
+						break;
+					case "datetime_seconds_mdy":
+						$(e).val('10-25-2016 23:45');
+						break;
+					case "datetime_seconds_dmy":
+						$(e).val('25-10-2016 23:45');
 						break;					
 				}
 			}
@@ -90,7 +110,7 @@ function fillRow(tr) {
 			$(e).val('55112');
 		} else if (fv == 'phone') {
             $(e).val('(555) 867-5309');
-        } else if (fv == 'time') {
+        } else if (fv == 'time' || fv == 'time_mm_ss') {
 			$(e).val('12:34');
 		} else {
 			//console.log("fv: " + fv);

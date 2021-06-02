@@ -110,7 +110,7 @@ function fillRow(tr) {
 			$(e).val('55112');
 		} else if (fv == 'phone') {
             $(e).val('(555) 867-5309');
-        } else if (fv == 'time') {
+        } else if (fv == 'time' || fv == 'time_mm_ss') {
 			$(e).val('12:34');
 		} else {
 			//console.log("fv: " + fv);

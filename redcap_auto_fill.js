@@ -81,6 +81,24 @@ function fillRow(tr) {
 						break;
 					case "date_dmy":
 						$(e).val('25-10-2016');
+						break;
+					case "datetime_ymd":
+						$(e).val('2016-10-25 23:45');
+						break;
+					case "datetime_mdy":
+						$(e).val('10-25-2016 23:45');
+						break;
+					case "datetime_dmy":
+						$(e).val('25-10-2016 23:45');
+						break;					
+					case "datetime_seconds_ymd":
+						$(e).val('2016-10-25 23:45');
+						break;
+					case "datetime_seconds_mdy":
+						$(e).val('10-25-2016 23:45');
+						break;
+					case "datetime_seconds_dmy":
+						$(e).val('25-10-2016 23:45');
 						break;					
 				}
 			}

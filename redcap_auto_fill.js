@@ -24,7 +24,9 @@ function getRandomWord() {
 
 function fillRow(tr) {
 	
-	var date_types = Array('date_ymd', 'date_mdy', 'datetime_ymd', 'datetime_mdy', 'datetime_seconds_ymd', 'datetime_seconds_mdy');
+	var date_types = Array('date_ymd', 'date_mdy', 'date_dmy', 
+			       'datetime_ymd', 'datetime_mdy', 'datetime_dmy',
+			       'datetime_seconds_ymd', 'datetime_seconds_mdy', 'datetime_seconds_dmy');
 
 	// Check a random radio button (skip checked radios)
 	var radios = $(tr).find("input[type=radio]").filter(":visible");

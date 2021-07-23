@@ -8,7 +8,7 @@
  *
  * javascript: (function () { 
  *	var jsCode = document.createElement('script'); 
- *	jsCode.setAttribute('src', 'https://med.stanford.edu/webtools/redcap/redcap_auto_fill.js');
+ *	jsCode.setAttribute('src', 'https://github.com/123andy/redcap-autofill-bookmarklet/raw/master/redcap_auto_fill.js');
  *	document.body.appendChild(jsCode); 
  * }());
  * 

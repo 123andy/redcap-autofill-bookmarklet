@@ -10,9 +10,9 @@ I will periodically update the location below with the new version
 
 ```
 javascript: (function () { 
-   var jsCode = document.createElement('script'); 
-   jsCode.setAttribute('src', 'https://med.stanford.edu/webtools/redcap/redcap_auto_fill.js');
-   document.body.appendChild(jsCode); 
+	var jsCode = document.createElement('script'); 
+	jsCode.setAttribute('src', 'https://cdn.jsdelivr.net/gh/123andy/redcap-autofill-bookmarklet/redcap_auto_fill.js');
+	document.body.appendChild(jsCode); 
 }());
 ```
 
